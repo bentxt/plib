@@ -1,6 +1,10 @@
 package Plib;
 use base qw (Exporter);
-our @EXPORT = qw(shpipe list hash echo  prn include clos clox arg setasub sref fun cfun xfun clarg ls nth catish reader head sedish replace grepish etch sh scriptpath scriptname args argv ispath d_exists fullpath d_path f_path f_exists envar writer fappend basename d_name f_ext prefix size lst2str);
+use File::Find 'find';
+use File::Spec::Functions qw (catfile catdir catpath splitdir splitpath); 
+use File::Basename qw(basename dirname);
+    use Cwd 'abs_path';
+our @EXPORT = qw(shpipe list hash echo  prn include clos clox arg setasub sref fun cfun xfun clarg ls nth catish reader head sedish replace  extract grepish etch sh scriptpath scriptname args argv ispath isdir isfile fullpath envar writer fappend basename d_name f_ext filename filext size lst2str find catdir catpath catfile splitdir  splitpath basename dirname tree);
 
 ## base
 
@@ -16,27 +20,15 @@ sub lst2str{
     return $str;
 }
 
-
 ## io
-#
-
-sub basename{
-    use File::Basename;
-    return File::Basename->basename(shift);
+sub filext{
+    my $file = shift;
+    return substr($file, rindex($file, '.') + 1);
 }
-sub dirname{
-    use File::Basename;
-    return File::Basename->dirname(shift);
-}
-sub suffix{
+sub filename{
     my $file = shift;
     my $sep = shift;
-    return substr($file, rindex($file, $sep) + 1);
-}
-sub prefix{
-    my $file = shift;
-    my $sep = shift;
-    return substr($file, 0, rindex($file, $sep));
+    return substr($file, 0, rindex($file, '.'));
 }
 
 sub writer{
@@ -53,24 +45,20 @@ sub fappend{
     print $handle @c;
     close $handle;
 }
-
-sub d_path {
-    my @dirs=@_;
-    use File::Spec; 
-    return File::Spec->catdir(@dirs);
-}
-sub f_path {
+sub tree{
     my $dir = shift;
-    my $file = shift ;
-    use File::Spec; 
-    return File::Spec->catpath('', $dir, $file);
+    my @list;
+    my $clos = sub { push(@list, $File::Find::name)};
+    find($clos, $dir);
+    return @list;
 }
-sub f_exists {
+
+sub isfile {
     my $path = shift;
-    if ( -e $path ) { return 1 } 
+    if ( -f $path ) { return 1 } 
     else { return 0 }
 }
-sub d_exists {
+sub isdir{
     my $path = shift;
     if ( -d $path ) { 
         return 1 ;
@@ -107,11 +95,9 @@ sub argv {
 }
 
 sub scriptpath {
-    use Cwd 'abs_path';
     return abs_path($0);
 }
 sub scriptname {
-    use File::Basename;
     return basename($0);
 }
 
@@ -156,6 +142,14 @@ sub replace{
     my $regto = sub { eval $tor } ;
     $ln =~ s/$regx/$regto->()/e ;
     return $ln;
+}
+sub extract{
+    my $ln = shift;
+    my $regx= shift;
+    my $q = shift;
+
+    my @x = ($ln =~ /$regx/) ;
+    return @x;
 }
 
 ## Prelude
