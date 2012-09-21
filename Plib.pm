@@ -1,10 +1,11 @@
 package Plib;
 use base qw (Exporter);
 use File::Find 'find';
+use File::Copy qw( cp );
 use File::Spec::Functions qw (catfile catdir catpath splitdir splitpath); 
 use File::Basename qw(basename dirname);
     use Cwd 'abs_path';
-our @EXPORT = qw(shpipe list hash echo  prn include clos clox arg setasub sref fun cfun xfun clarg ls nth catish reader head sedish replace  extract grepish etch sh scriptpath scriptname args argv ispath isdir isfile fullpath envar writer fappend basename d_name f_ext filename filext size lst2str find catdir catpath catfile splitdir  splitpath basename dirname tree);
+our @EXPORT = qw(shpipe list hash echo  prn include clos clox arg setasub sref fun cfun xfun clarg ls nth catish reader head sedish replace  extract grepish etch sh scriptpath scriptname args argv ispath isdir isfile fullpath envar redir basename d_name f_ext filename filext size tostr find catdir catpath catfile splitdir  splitpath basename dirname tree matches cp cpdir);
 
 ## base
 
@@ -14,7 +15,7 @@ sub size {
     return $size;
 }
 
-sub lst2str{
+sub tostr{
     my @lns = @_;
     my $str = join('',@lns);
     return $str;
@@ -31,20 +32,28 @@ sub filename{
     return substr($file, 0, rindex($file, '.'));
 }
 
-sub writer{
+sub redir{
+    my $op = shift;
     my $f = shift;
     my @c = @_;
-    open my $handle, '>', $f;
-    print $handle @c;
-    close $handle;
+    if ( $op eq '>' ){
+        open my $handle, '>', $f;
+        print $handle @c;
+        close $handle;
+    } elsif ( $op eq '>>' ){
+        open my $handle, '>>', $f;
+        print $handle @c;
+        close $handle;
+    } elsif ( $op eq '<' ){
+        open my $handle, '<', $f;
+        chomp(my @lines = <$handle>);
+        close $handle;
+        return @lines;
+    } else{
+        die ("ERR: Couldn't redirect");
+    }
 }
-sub fappend{
-    my $f = shift;
-    my @c = @_;
-    open my $handle, '>>', $f;
-    print $handle @c;
-    close $handle;
-}
+
 sub tree{
     my $dir = shift;
     my @list;
@@ -52,6 +61,45 @@ sub tree{
     find($clos, $dir);
     return @list;
 }
+
+sub cpdir{
+    use File::Copy;
+    my ($from_dir, $to_dir ) = @_;
+    opendir my($dh), $from_dir or die "Could not open dir '$from_dir': $!";
+    for my $entry (readdir $dh) {
+        next if $entry =~ /^\.+\.*$/;
+        my $source = "$from_dir/$entry";
+        my $destination = "$to_dir/$entry";
+        if( not -d $to_dir ){ mkdir $to_dir ; } 
+        if (-d $source) {
+            mkdir $destination or die "mkdir '$destination' failed: $!" if not -e $destination;
+            cpdir($source, $destination );
+        } else {
+            copy($source, $destination) or die "copy failed: $!";
+        }
+    }
+    closedir $dh;
+    return;
+}
+sub cpdirx{
+    my ($from_dir, $to_dir, $regex) = @_;
+    opendir my($dh), $from_dir or die "Could not open dir '$from_dir': $!";
+    for my $entry (readdir $dh) {
+        next if $entry =~ /$regex/;
+        my $source = "$from_dir/$entry";
+        my $destination = "$to_dir/$entry";
+        if (-d $source) {
+            mkdir $destination or die "mkdir '$destination' failed: $!" if not -e $destination;
+            copy_recursively($source, $destination, $regex);
+        } else {
+            copy($source, $destination) or die "copy failed: $!";
+        }
+    }
+    closedir $dh;
+    return;
+}
+
+
 
 sub isfile {
     my $path = shift;
@@ -85,11 +133,12 @@ sub args {
 }
 sub argv {
     my $v = shift;
-    if ( $v == 0 ){
-        $ARGV[0];
-    }elsif ( $v == '' ){
+    if ( not defined $v  ){
         @ARGV;
+    }elsif ( $v == 0 ){
+        return abs_path($0);
     }else{
+        $v--;
         $ARGV[$v];
     }
 }
@@ -152,6 +201,17 @@ sub extract{
     return @x;
 }
 
+sub matches{
+    my $ln = shift;
+    my $regx= shift;
+    my $q = shift;
+    if ($ln =~ /$regx/) {
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
 ## Prelude
 
 
@@ -207,10 +267,6 @@ sub ls {
 
 sub reader{
     my $p = shift;
-    open my $handle, '<', $p;
-    chomp(my @lines = <$handle>);
-    close $handle;
-    return @lines;
 }
 sub catish {
     my $p = shift;
