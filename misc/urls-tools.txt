@@ -1,0 +1,7 @@
+http://search.cpan.org/~szabgab/File-Tools-0.06/lib/File/Tools.pm#fileparse
+
+http://search.cpan.org/~dom/perl-5.14.3/ext/POSIX/lib/POSIX.pod
+
+http://search.cpan.org/~cwest/ppt-0.14/
+
+http://search.cpan.org/~flora/ExtUtils-Command-1.17/lib/ExtUtils/Command.pm

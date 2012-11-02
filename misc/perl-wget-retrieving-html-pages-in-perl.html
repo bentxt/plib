@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<script src="/js/swfobject.js" type="text/javascript"></script>
+
+	<meta charset="UTF-8" />
+	<title>Perl Wget &#8212; Retrieving HTML Pages In Perl &#8211; Cave of Programming</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="stylesheet" href="http://www.caveofprogramming.com/wp-content/themes/simplish/style.css" type="text/css" media="all" title="Simplish" />
+	<link rel="pingback" href="http://www.caveofprogramming.com/xmlrpc.php" />
+
+
+<!-- wp_jschat dans le header -->
+<!-- END wp_jschat dans le header -->
+<link rel="alternate" type="application/rss+xml" title="Cave of Programming &raquo; Feed" href="http://www.caveofprogramming.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Cave of Programming &raquo; Comments Feed" href="http://www.caveofprogramming.com/comments/feed/" />
+<meta name="description" content="How to retrieve HTML files in Perl, with code examples. Scrape web content, pretending to be a real browser." />
+<link rel="alternate" type="application/rss+xml" title="Cave of Programming &raquo; Perl Wget &#8212; Retrieving HTML Pages In Perl Comments Feed" href="http://www.caveofprogramming.com/perl/perl-wget-retrieving-html-pages-in-perl/feed/" />
+<meta name="keywords" content="perl, programming, html, html, perl, programming" />
+<meta name="robots" content="index,follow,noodp,noydir" />
+<link rel="canonical" href="http://www.caveofprogramming.com/perl/perl-wget-retrieving-html-pages-in-perl/" />
+<link rel='stylesheet' id='wp_jschat-css'  href='http://www.caveofprogramming.com/wp-content/plugins/javascript-chat-for-wordpress/css/wp_jschat.css?ver=3.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='adv-spoiler-css'  href='http://www.caveofprogramming.com/wp-content/plugins/advanced-spoiler/css/advanced-spoiler.css?ver=2.02' type='text/css' media='all' />
+<link rel='stylesheet' id='page-list-style-css'  href='http://www.caveofprogramming.com/wp-content/plugins/sitemap/css/page-list.css?ver=1.9' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.caveofprogramming.com/wp-includes/js/comment-reply.js?ver=3.4.2'></script>
+<script type='text/javascript' src='http://www.caveofprogramming.com/wp-includes/js/jquery/jquery.js?ver=1.7.2'></script>
+<script type='text/javascript' src='http://www.caveofprogramming.com/wp-content/plugins/javascript-chat-for-wordpress/javascript/wp_jschat.js?ver=3.4.2'></script>
+<script type='text/javascript' src='http://www.caveofprogramming.com/wp-content/plugins/advanced-spoiler/js/jquery-spoiler.js?ver=2.02'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var SHRSB_Globals = {"src":"http:\/\/www.caveofprogramming.com\/wp-content\/uploads\/shareaholic\/spritegen","perfoption":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.caveofprogramming.com/wp-content/uploads/shareaholic/spritegen/jquery.shareaholic-publishers-sb.min.js?ver=4.0.6.4'></script>
+<script type='text/javascript' src='http://dtym7iokkjlif.cloudfront.net/dough/1.0/recipe.js'></script>
+<script type='text/javascript' src='http://www.caveofprogramming.com/wp-content/plugins/google-analyticator/external-tracking.min.js?ver=6.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.caveofprogramming.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.caveofprogramming.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Perl Hashes &#8212; A Guide to Associative Arrays in Perl' href='http://www.caveofprogramming.com/perl/perl-hashes-a-guide-to-associative-arrays-in-perl/' />
+<link rel='next' title='Perl Array Sort &#8212; How to Sort Arrays In Perl' href='http://www.caveofprogramming.com/perl/perl-array-sort-how-to-sort-arrays-in-perl/' />
+<meta name="generator" content="WordPress 3.4.2" />
+<link rel='shortlink' href='http://www.caveofprogramming.com/?p=230' />
+
+
+<!-- Google and other search engines should not cache this page. Plugin by Kristian Risager Larsen, http://kezze.dk . Download the plugin at http://wordpress.org/extend/plugins/avoid-googles-cache/ -->
+<meta name="robots" content="noarchive" />
+
+		<link rel='alternate' type='application/rss+xml' title="Forums RSS" href="http://www.caveofprogramming.com/wp-content/plugins/forum-server/feed.php?topic=all" />
+		<link rel='stylesheet' type='text/css' href="http://www.caveofprogramming.com/wp-content/plugins/forum-server/skins/wpf-2.0/style.css"  />
+
+
+
+		<script language="JavaScript" type="text/javascript" src="http://www.caveofprogramming.com/wp-content/plugins/forum-server/js/script.js"></script>
+
+	<script language="JavaScript" type="text/javascript">
+		window.skinurl = 'http://www.caveofprogramming.com/wp-content/plugins/forum-server/skins/wpf-2.0';		function wpf_confirm(){
+			var answer = confirm ('Remove this post?');
+			if (!answer)
+				return false;
+			else
+				return true;
+		}
+
+		</script>
+
+
+
+	
+
+<!-- Start Shareaholic OgTags -->
+
+	<!-- Shareaholic Notice: There is neither a featured nor gallery image set -->
+
+<!-- End Shareaholic OgTags -->
+
+<!-- Required by Subscribe Here Plugin 1.0 plugin --><link rel="stylesheet" type="text/css" href="http://www.caveofprogramming.com/wp-content/plugins/subscribe-here-widget/subscribe-here-widget.css" media="screen" />	
+<!-- START: Syntax Highlighter ComPress -->
+<script type="text/javascript" src="http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shAutoloader.js"></script>
+<link type="text/css" rel="stylesheet" href="http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/styles/shCoreDefault.css"/>
+<!-- END: Syntax Highlighter ComPress -->
+
+  <style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style>		<style type="text/css">
+		#header{
+			background: url();
+		}
+		/* Duplicates style.css:/^#header a:hover */
+				#header a:active, #header a:hover{
+					color: #760909;
+				}		</style>
+	<!-- Google Analytics Tracking by Google Analyticator 6.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-21085672-3']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body class="single single-post postid-230 single-format-standard">
+<div id="container">
+<div id="toolbar_container">
+	<a class="logo" href="/"><span class="displace">Cave of Programming</span></a>
+
+</div>
+	<hr />
+	<div id="content-wrapper">
+<!-- goto ^(archive image index page search single ...).php:/^div#content -->
+
+		<div id="content" role="main">
+
+
+			<div id="article-230" class="post-230 post type-post status-publish format-standard hentry category-perl tag-html tag-perl-2 tag-programming">
+				<h2 class="entry-title"><a href="http://www.caveofprogramming.com/perl/perl-wget-retrieving-html-pages-in-perl/" rel="bookmark">Perl Wget &#8212; Retrieving HTML Pages In Perl</a></h2>
+<div class="posted">Posted by <span class="entry-author author vcard"><a class="url fn" href="http://www.caveofprogramming.com/author/Squiffy/" title="More posts by Squiffy">Squiffy</a></span><abbr class="published posted_date" title="2011-04-01T07:43:21+00:00"> &ndash; April 1, 2011</abbr>
+				</div>
+				<br class="clear" />	
+				<div class="entry-content">
+					<!-- Start Shareaholic LikeButtonSetTop Automatic --><div style="clear: both; min-height: 1px; height: 3px; width: 100%;"></div><div class='shareaholic-like-buttonset' style='float:none;height:30px;'><a class='shareaholic-fblike' data-shr_layout='button_count' data-shr_showfaces='false' data-shr_href='http%3A%2F%2Fwww.caveofprogramming.com%2Fperl%2Fperl-wget-retrieving-html-pages-in-perl%2F' data-shr_title='Perl+Wget+--+Retrieving+HTML+Pages+In+Perl'></a><a class='shareaholic-fbsend' data-shr_href='http%3A%2F%2Fwww.caveofprogramming.com%2Fperl%2Fperl-wget-retrieving-html-pages-in-perl%2F'></a><a class='shareaholic-googleplusone' data-shr_size='medium' data-shr_count='true' data-shr_href='http%3A%2F%2Fwww.caveofprogramming.com%2Fperl%2Fperl-wget-retrieving-html-pages-in-perl%2F' data-shr_title='Perl+Wget+--+Retrieving+HTML+Pages+In+Perl'></a><a class='shareaholic-tweetbutton' data-shr_count='none' data-shr_href='http%3A%2F%2Fwww.caveofprogramming.com%2Fperl%2Fperl-wget-retrieving-html-pages-in-perl%2F' data-shr_title='Perl+Wget+--+Retrieving+HTML+Pages+In+Perl'></a></div><div style="clear: both; min-height: 1px; height: 3px; width: 100%;"></div><!-- End Shareaholic LikeButtonSetTop Automatic --><p>Wget is a command-line program that allows you to retrieve files via HTTP or FTP from a UNIX prompt. People who are familiar with UNIX or Linux often wonder how to use <b>wget</b> in Perl. The simple answer is &#8212; don&#8217;t! OK, if you really want to use wget in Perl, you can always execute it like any other command-line program and capture the output. </p>
+<p><a href="http://www.caveofprogramming.com/advert/online-programming-tutor"><img style="border: 1px solid black"  src="http://www.caveofprogramming.com/wp-content/uploads/2011/04/perlad.png" alt="" title="perlad" width="630" height="100" class="aligncenter size-full wp-image-1142" /></a></p>
+<p>For example the following program executes a simple UNIX command, captures the output and displays it.</p>
+<pre class="code, brush: perl">
+use strict;
+use warnings;
+
+sub main {
+    my @lines = `ls -l`;
+
+    print join("", @lines);
+}
+
+main();
+
+</pre>
+<p>However, it&#8217;s better to bypass <b>wget</b> altogether and use the Perl package LWP.</p>
+<h3>Don&#8217;t Use Wget &#8212; Use LWP</h3>
+<p>This program retrieves an HTML page using LWP::Simple.</p>
+<pre class="code, brush: perl">
+use strict; 
+use warnings; 
+
+use LWP::Simple;
+
+sub main
+{
+	my $data = get("http://news.bbc.co.uk");
+	
+	print "Retrieved " . length($data) . " bytes of data.";
+}
+
+main();
+
+</pre>
+<pre class="output">
+Retrieved 84294 bytes of data.
+</pre>
+<p>Much cleaner and more portable than executing <b>wget</b> on the command line!</p>
+<h3>Checking For Errors While Retrieving HTML in Perl</h3>
+<p>If you want to do anything more complicated than simply fetch an HTML file, you might want to go to the extra trouble of creating an LWP user agent object. The &#8220;user agent&#8221; is really a virtual browser and allows you to accept cookies or pretend to be Internet Explorer, etc.</p>
+<p>Here&#8217;s a simple example that does the same thing as the code above, but contains better error checking.</p>
+<pre class="code, brush: perl">
+use strict; 
+use warnings; 
+
+use LWP::UserAgent;
+
+sub main
+{
+	my $ua = LWP::UserAgent->new();
+	
+	my $response = $ua->get('http://news.bbc.co.uk');
+	
+	if ($response->is_success) {
+		print "Retrieved " . 
+                      length($response->decoded_content) . 
+                      " bytes of data.";
+	}
+	else {
+		print "Error: " . $response->status_line;
+	}
+}
+
+main();
+
+</pre>
+<pre class="output">
+Retrieved 84245 bytes of data.
+</pre>
+<p>If we mangle the URL, we get a message like this:</p>
+<pre class="output">
+Error: 500 Can't connect to news.bbc.co.ukd:80 
+(Bad hostname 'news.bbc.co.ukd')
+</pre>
+<h3>Pretending To Be a Real Browser with Perl LWP</h3>
+<p>A lot of sites won&#8217;t let you in unless you accept cookies and appear to be a real browser. This is especially true of sites that require you to login somehow. Let&#8217;s take a look at a program that accepts website cookies and masquerades as a real browser. By default the cookies are discarded when the program finishes running, but just for kicks we&#8217;ll save them in a file called &#8220;cookies.txt&#8221; (note: you could specify a full file path if you wanted).</p>
+<p>We&#8217;ll also save the retrieved HTML in a file called &#8220;save.html&#8221;.</p>
+<pre class="code, brush: perl">
+use strict; 
+use warnings; 
+
+use LWP::UserAgent;
+use HTTP::Cookies;
+
+sub main
+{
+	# Create the fake browser (user agent).
+	my $ua = LWP::UserAgent->new();
+	
+	# Accept cookies. You don't need to supply
+	# any options to new() here, but just for
+	# kicks we'll save the cookies to a file.
+	my $cookies = HTTP::Cookies->new(
+		file => "cookies.txt",
+		autosave => 1,
+	);
+	
+	$ua->cookie_jar($cookies);
+	
+	# Pretend to be Internet Explorer.
+	$ua->agent("Windows IE 7");
+	# or maybe .... $ua->agent("Mozilla/8.0");
+	
+	# Get some HTML.
+	my $response = $ua->get('http://news.bbc.co.uk');
+	
+	unless($response->is_success) {
+		print "Error: " . $response->status_line;
+	}
+	
+			
+	# Let's save the output.
+	my $save = "save.html";
+	
+	unless(open SAVE, '>' . $save) {
+		die "\nCannot create save file '$save'\n";
+	}
+	
+	# Without this line, we may get a
+	# 'wide characters in print' warning.
+	binmode(SAVE, ":utf8");
+	
+	print SAVE $response->decoded_content;
+	
+	close SAVE;
+	
+	print "Saved " . 
+		length($response->decoded_content) . 
+		" bytes of data to '$save'.";
+}
+
+main();
+
+</pre>
+<pre class="output">
+Saved 83938 bytes of data to 'save.html'.
+</pre>
+<h3>FTP and Other Requests With LWP</h3>
+<p>LWP can also handle ftp and other protocols. Check out the <a href="http://search.cpan.org/dist/libwww-perl/lib/LWP.pm">CPAN documentation</a> for more information.</p>
+<div class="shr-publisher-230"></div><!-- Start Shareaholic LikeButtonSetBottom Automatic --><div style="clear: both; min-height: 1px; height: 3px; width: 100%;"></div><div class='shareaholic-like-buttonset' style='float:none;height:30px;'><a class='shareaholic-fblike' data-shr_layout='button_count' data-shr_showfaces='false' data-shr_href='http%3A%2F%2Fwww.caveofprogramming.com%2Fperl%2Fperl-wget-retrieving-html-pages-in-perl%2F' data-shr_title='Perl+Wget+--+Retrieving+HTML+Pages+In+Perl'></a><a class='shareaholic-fbsend' data-shr_href='http%3A%2F%2Fwww.caveofprogramming.com%2Fperl%2Fperl-wget-retrieving-html-pages-in-perl%2F'></a><a class='shareaholic-googleplusone' data-shr_size='medium' data-shr_count='true' data-shr_href='http%3A%2F%2Fwww.caveofprogramming.com%2Fperl%2Fperl-wget-retrieving-html-pages-in-perl%2F' data-shr_title='Perl+Wget+--+Retrieving+HTML+Pages+In+Perl'></a><a class='shareaholic-tweetbutton' data-shr_count='none' data-shr_href='http%3A%2F%2Fwww.caveofprogramming.com%2Fperl%2Fperl-wget-retrieving-html-pages-in-perl%2F' data-shr_title='Perl+Wget+--+Retrieving+HTML+Pages+In+Perl'></a></div><div style="clear: both; min-height: 1px; height: 3px; width: 100%;"></div><!-- End Shareaholic LikeButtonSetBottom Automatic -->									</div><!--#entry-content-->
+
+				<ul class="meta">
+					<li class="categories">Category: <a href="http://www.caveofprogramming.com/category/perl/" title="View all posts in Perl" rel="category tag">Perl</a></li>
+					<li class="tags">Tags: <a href="http://www.caveofprogramming.com/tag/html/" rel="tag">html</a>, <a href="http://www.caveofprogramming.com/tag/perl-2/" rel="tag">perl</a>, <a href="http://www.caveofprogramming.com/tag/programming/" rel="tag">programming</a></li>
+					<li><a href="http://www.caveofprogramming.com/perl/perl-wget-retrieving-html-pages-in-perl/#comments" class="comments-link"  title="Comment on Perl Wget &#8212; Retrieving HTML Pages In Perl">1 Comment</a></li>
+				</ul>
+			</div><!--#hentry-->
+
+		
+			<div id="comments">
+
+
+			<h3 id="comments-title">1 Comment on <em>Perl Wget &#8212; Retrieving HTML Pages In Perl</em></h3>
+
+
+			<ol class="commentlist">
+						<li class="comment even thread-even depth-1" id="comment-1914">
+				<div id="div-comment-1914" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/d08281e1f1d98af16451fe77c52b2a47?s=32&amp;d=monsterid&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />		<cite class="fn">pDale Campbell</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.caveofprogramming.com/perl/perl-wget-retrieving-html-pages-in-perl/#comment-1914">
+			February 8, 2012 at 2:54 pm</a>		</div>
+
+		<p>Excellent, succinct description of web page fetching. Thanks!</p>
+
+		<div class="reply">
+		<a class='comment-reply-link' href='/perl/perl-wget-retrieving-html-pages-in-perl/?replytocom=1914#respond' onclick='return addComment.moveForm("div-comment-1914", "1914", "respond", "230")'>Reply</a>		</div>
+				</div>
+		</li>
+			</ol>
+
+
+
+								<div id="respond">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/perl/perl-wget-retrieving-html-pages-in-perl/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://www.caveofprogramming.com/wp-comments-post.php" method="post" id="commentform">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30" /></p>
+<p class="cptch_block"><br />	<input type="hidden" name="cptch_result" value="ZvU=" /><input type="hidden" value="Version: 2.12" />
+	8 &times; <input type="text" name="cptch_number" value="" maxlength="1" size="1" style="width:20px;margin-bottom:0;display:inline;" /> =  sixty four</p>												<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post Comment" />
+							<input type='hidden' name='comment_post_ID' value='230' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+											</form>
+							</div><!-- #respond -->
+						
+</div><!-- #comments -->
+
+
+			<div id="postnav" class="navigation">
+				<div class="prevlink">&laquo; <a href="http://www.caveofprogramming.com/perl/perl-hashes-a-guide-to-associative-arrays-in-perl/" rel="prev">Perl Hashes &#8212; A Guide to Associative Arrays in Perl</a></div>
+				<div class="nextlink"><a href="http://www.caveofprogramming.com/perl/perl-array-sort-how-to-sort-arrays-in-perl/" rel="next">Perl Array Sort &#8212; How to Sort Arrays In Perl</a> &raquo;</div>
+			</div>
+
+
+		</div><!-- #content -->
+
+		<div id="sidebar" role="complementary">
+			<ul>
+			<li id="subscribe-here" class="widget widget_subscribeHere"><a href="http://www.caveofprogramming.com/feed/"><div class="rss-widget">Articles by RSS</div></a>	<form class="feedemail-form" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=caveofprogramming', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+		<div class="feedemail-label">Articles by Email:</div>
+		<input type="text" class="feedemail-input" name="email" value="your email here" onclick="this.focus();this.select();"/>
+		<input type="hidden" value="caveofprogramming" name="uri"/>
+		<input type="hidden" name="loc" value="en_US"/>
+		<input type="submit" value="Send me articles!" class="feedemail-button"/>
+		<div><span class="feedemail-footer">Delivered by <a href="http://feedburner.google.com" target="_blank">FeedBurner</a></span></div>
+	</form></li>
+<li id="text-6" class="widget widget_text">			<div class="textwidget"><font style="line-height:10%; font-size:10px">Enter your email here if you want to be notified when new articles are published. I won't share your email with anyone, and you can unsubscribe any time.</font>
+<p/></div>
+		</li>
+<li id="search-5" class="widget widget_search"><form role="search" method="get" id="searchform" action="http://www.caveofprogramming.com/" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li>
+<li id="text-5" class="widget widget_text">			<div class="textwidget"><p><a href="http://www.udemy.com/android-tutorial/"><b>Learn Android Programming</b><br />
+Discover how to write and publish applications for mobile phones,<br />
+Click here for more info.</a></p>
+<p><a href="http://sellfy.com/aff/VLE7gj"><font style="font-weight: bold; color: green;">Make </font><font style="font-weight: bold; color: red;">$$$ </font><font style="font-weight: bold; color: green;"> selling our videos via links on your blog or website! Click here.</font></a></p>
+<p><font style="color: black; font-weight:bold;"><a  style="font-weight:bold;" href="http://www.caveofprogramming.com/java/java-swing-gui-programming-premium-course/">Java Swing: Complete course on desktop programming!</font></a> Master desktop Java programming, web programming with applets, databases and even animation.</p>
+</div>
+		</li>
+<li id="categories-5" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+		<ul>
+	<li class="cat-item cat-item-92"><a href="http://www.caveofprogramming.com/category/as3-flash/" title="View all posts filed under AS3 (Flash)">AS3 (Flash)</a> (1)
+</li>
+	<li class="cat-item cat-item-116"><a href="http://www.caveofprogramming.com/category/assorted/" title="View all posts filed under Assorted Stuff">Assorted Stuff</a> (2)
+</li>
+	<li class="cat-item cat-item-48"><a href="http://www.caveofprogramming.com/category/csharp/" title="View all posts filed under C#">C#</a> (10)
+</li>
+	<li class="cat-item cat-item-42"><a href="http://www.caveofprogramming.com/category/c/" title="View all posts filed under C++">C++</a> (3)
+</li>
+	<li class="cat-item cat-item-64"><a href="http://www.caveofprogramming.com/category/installers/" title="View all posts filed under Developing Installers">Developing Installers</a> (1)
+</li>
+	<li class="cat-item cat-item-36"><a href="http://www.caveofprogramming.com/category/java/" title="View all posts filed under Java">Java</a> (79)
+</li>
+	<li class="cat-item cat-item-103"><a href="http://www.caveofprogramming.com/category/java-collections-framework/" title="View all posts filed under Java Collections Framework">Java Collections Framework</a> (10)
+</li>
+	<li class="cat-item cat-item-91"><a href="http://www.caveofprogramming.com/category/java-video-tutorials-advanced/java-multithreading/" title="View all posts filed under Java Multithreading">Java Multithreading</a> (14)
+</li>
+	<li class="cat-item cat-item-90"><a href="http://www.caveofprogramming.com/category/java-video-tutorials-advanced/java-swing-gui/" title="View all posts filed under Java Swing (GUI)">Java Swing (GUI)</a> (5)
+</li>
+	<li class="cat-item cat-item-46"><a href="http://www.caveofprogramming.com/category/javatutorial/" title="View all posts filed under Java Tutorial">Java Tutorial</a> (20)
+</li>
+	<li class="cat-item cat-item-82"><a href="http://www.caveofprogramming.com/category/java-video-tutorials-advanced/" title="View all posts filed under Java Video Tutorials (Advanced)">Java Video Tutorials (Advanced)</a> (18)
+</li>
+	<li class="cat-item cat-item-73"><a href="http://www.caveofprogramming.com/category/java-video/" title="View all posts filed under Java Video Tutorials (Beginners)">Java Video Tutorials (Beginners)</a> (33)
+</li>
+	<li class="cat-item cat-item-24"><a href="http://www.caveofprogramming.com/category/javascript-2/" title="View all posts filed under Javascript">Javascript</a> (6)
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.caveofprogramming.com/category/mastering-java-swing/" title="View all posts filed under Mastering Java Swing, Complete Course">Mastering Java Swing, Complete Course</a> (6)
+</li>
+	<li class="cat-item cat-item-110"><a href="http://www.caveofprogramming.com/category/mysql/" title="View all posts filed under MySQL">MySQL</a> (1)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.caveofprogramming.com/category/perl/" title="View all posts filed under Perl">Perl</a> (27)
+</li>
+	<li class="cat-item cat-item-26"><a href="http://www.caveofprogramming.com/category/php/" title="View all posts filed under PHP">PHP</a> (3)
+</li>
+	<li class="cat-item cat-item-150"><a href="http://www.caveofprogramming.com/category/servlets-and-jsps/" title="View all posts filed under Servlets and JSPs">Servlets and JSPs</a> (3)
+</li>
+	<li class="cat-item cat-item-45"><a href="http://www.caveofprogramming.com/category/advert/" title="View all posts filed under Tuition">Tuition</a> (8)
+</li>
+		</ul>
+</li>
+		<li id="recent-posts-5" class="widget widget_recent_entries">		<h2 class="widgettitle">Recent Posts</h2>
+		<ul>
+				<li><a href="http://www.caveofprogramming.com/java/using-iterators-java-collections-framework-video-tutorial-part-10/" title="Using Iterators: Java Collections Framework Video Tutorial, Part 10">Using Iterators: Java Collections Framework Video Tutorial, Part 10</a></li>
+				<li><a href="http://www.caveofprogramming.com/java/java-for-complete-beginners-video-part-33-reading-files/" title="Java for Complete Beginners (Video), Part 33: Reading Files">Java for Complete Beginners (Video), Part 33: Reading Files</a></li>
+				<li><a href="http://www.caveofprogramming.com/java/queue-java-collections-framework-video-tutorial-part-9/" title="Queues: Java Collections Framework Video Tutorial, Part 9">Queues: Java Collections Framework Video Tutorial, Part 9</a></li>
+				<li><a href="http://www.caveofprogramming.com/servlets-and-jsps/hello-world-servlet/" title="Servlets and JSPs: Part 3 &#8211; A &#8220;Hello World&#8221; Servlet">Servlets and JSPs: Part 3 &#8211; A &#8220;Hello World&#8221; Servlet</a></li>
+				<li><a href="http://www.caveofprogramming.com/assorted/make-money-as-a-affiliate-of-cave-of-programming/" title="Make Money as a Affiliate of Cave of Programming">Make Money as a Affiliate of Cave of Programming</a></li>
+				<li><a href="http://www.caveofprogramming.com/servlets-and-jsps/tomcat-eclipse-part-2/" title="Servlets and JSPs: Part 2 &#8211; Setting Up Your System">Servlets and JSPs: Part 2 &#8211; Setting Up Your System</a></li>
+				<li><a href="http://www.caveofprogramming.com/courses" title="Complete Video Courses">Complete Video Courses</a></li>
+				<li><a href="http://www.caveofprogramming.com/javaweb" title="JSP and Servlet Tutorial: Learn Java Web Programming">JSP and Servlet Tutorial: Learn Java Web Programming</a></li>
+				<li><a href="http://www.caveofprogramming.com/servlets-and-jsps/introduction/" title="Servlets and JSPs: Part 1 &#8211; Introduction to Java Web Programming">Servlets and JSPs: Part 1 &#8211; Introduction to Java Web Programming</a></li>
+				<li><a href="http://www.caveofprogramming.com/java/java-for-complete-beginners-video-part-32-anonymous-classes/" title="Java for Complete Beginners (Video), Part 32: Anonymous Classes">Java for Complete Beginners (Video), Part 32: Anonymous Classes</a></li>
+				<li><a href="http://www.caveofprogramming.com/mastering-java-swing/mastering-java-swing-custom-components-part-5/" title="Mastering Java Swing:Custom Components, Part 5">Mastering Java Swing:Custom Components, Part 5</a></li>
+				<li><a href="http://www.caveofprogramming.com/mastering-java-swing/mastering-java-swing-button-clicks-part-4/" title="Mastering Java Swing: Responding to Button Clicks, Part 4">Mastering Java Swing: Responding to Button Clicks, Part 4</a></li>
+				<li><a href="http://www.caveofprogramming.com/java/java-for-complete-beginners-video-part-31-generics-wildcards/" title="Java for Complete Beginners (Video), Part 31: Generics and Wildcards">Java for Complete Beginners (Video), Part 31: Generics and Wildcards</a></li>
+				<li><a href="http://www.caveofprogramming.com/mastering-java-swing/mastering-java-swing-layouts-part-3/" title="Mastering Java Swing: Adding Components, Part 3">Mastering Java Swing: Adding Components, Part 3</a></li>
+				<li><a href="http://www.caveofprogramming.com/java/java-for-complete-beginners-video-part-30-generic/" title="Java for Complete Beginners (Video), Part 30: Using Generics">Java for Complete Beginners (Video), Part 30: Using Generics</a></li>
+				</ul>
+		</li>
+<li id="tag_cloud-5" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href='http://www.caveofprogramming.com/tag/api/' class='tag-link-138' title='3 topics' style='font-size: 9.15068493151pt;'>api</a>
+<a href='http://www.caveofprogramming.com/tag/applet/' class='tag-link-142' title='5 topics' style='font-size: 10.8767123288pt;'>applet</a>
+<a href='http://www.caveofprogramming.com/tag/array/' class='tag-link-15' title='2 topics' style='font-size: 8pt;'>array</a>
+<a href='http://www.caveofprogramming.com/tag/arrays/' class='tag-link-6' title='3 topics' style='font-size: 9.15068493151pt;'>arrays</a>
+<a href='http://www.caveofprogramming.com/tag/basic/' class='tag-link-62' title='2 topics' style='font-size: 8pt;'>basic</a>
+<a href='http://www.caveofprogramming.com/tag/beginners/' class='tag-link-70' title='29 topics' style='font-size: 17.5890410959pt;'>beginners</a>
+<a href='http://www.caveofprogramming.com/tag/c-3/' class='tag-link-50' title='5 topics' style='font-size: 10.8767123288pt;'>c#</a>
+<a href='http://www.caveofprogramming.com/tag/c-2/' class='tag-link-43' title='3 topics' style='font-size: 9.15068493151pt;'>c++</a>
+<a href='http://www.caveofprogramming.com/tag/casting/' class='tag-link-139' title='2 topics' style='font-size: 8pt;'>casting</a>
+<a href='http://www.caveofprogramming.com/tag/classes/' class='tag-link-39' title='9 topics' style='font-size: 12.9863013699pt;'>classes</a>
+<a href='http://www.caveofprogramming.com/tag/computers/' class='tag-link-7' title='6 topics' style='font-size: 11.5479452055pt;'>computers</a>
+<a href='http://www.caveofprogramming.com/tag/constructors/' class='tag-link-115' title='2 topics' style='font-size: 8pt;'>constructors</a>
+<a href='http://www.caveofprogramming.com/tag/desktop/' class='tag-link-141' title='5 topics' style='font-size: 10.8767123288pt;'>desktop</a>
+<a href='http://www.caveofprogramming.com/tag/eclipse/' class='tag-link-76' title='31 topics' style='font-size: 17.8767123288pt;'>eclipse</a>
+<a href='http://www.caveofprogramming.com/tag/file/' class='tag-link-20' title='3 topics' style='font-size: 9.15068493151pt;'>file</a>
+<a href='http://www.caveofprogramming.com/tag/future/' class='tag-link-106' title='2 topics' style='font-size: 8pt;'>future</a>
+<a href='http://www.caveofprogramming.com/tag/get/' class='tag-link-31' title='2 topics' style='font-size: 8pt;'>get</a>
+<a href='http://www.caveofprogramming.com/tag/grinds/' class='tag-link-69' title='2 topics' style='font-size: 8pt;'>grinds</a>
+<a href='http://www.caveofprogramming.com/tag/hashmap/' class='tag-link-118' title='2 topics' style='font-size: 8pt;'>hashmap</a>
+<a href='http://www.caveofprogramming.com/tag/html/' class='tag-link-12' title='4 topics' style='font-size: 10.1095890411pt;'>html</a>
+<a href='http://www.caveofprogramming.com/tag/interface/' class='tag-link-129' title='2 topics' style='font-size: 8pt;'>interface</a>
+<a href='http://www.caveofprogramming.com/tag/java-2/' class='tag-link-37' title='87 topics' style='font-size: 22pt;'>java</a>
+<a href='http://www.caveofprogramming.com/tag/javascript/' class='tag-link-23' title='7 topics' style='font-size: 12.0273972603pt;'>javascript</a>
+<a href='http://www.caveofprogramming.com/tag/loops/' class='tag-link-35' title='4 topics' style='font-size: 10.1095890411pt;'>loops</a>
+<a href='http://www.caveofprogramming.com/tag/map/' class='tag-link-117' title='5 topics' style='font-size: 10.8767123288pt;'>map</a>
+<a href='http://www.caveofprogramming.com/tag/methods/' class='tag-link-104' title='6 topics' style='font-size: 11.5479452055pt;'>methods</a>
+<a href='http://www.caveofprogramming.com/tag/multithreading/' class='tag-link-77' title='14 topics' style='font-size: 14.7123287671pt;'>multithreading</a>
+<a href='http://www.caveofprogramming.com/tag/objects/' class='tag-link-40' title='2 topics' style='font-size: 8pt;'>objects</a>
+<a href='http://www.caveofprogramming.com/tag/online/' class='tag-link-58' title='4 topics' style='font-size: 10.1095890411pt;'>online</a>
+<a href='http://www.caveofprogramming.com/tag/perl-2/' class='tag-link-5' title='25 topics' style='font-size: 16.9178082192pt;'>perl</a>
+<a href='http://www.caveofprogramming.com/tag/php-2/' class='tag-link-27' title='3 topics' style='font-size: 9.15068493151pt;'>php</a>
+<a href='http://www.caveofprogramming.com/tag/polymorphism/' class='tag-link-135' title='2 topics' style='font-size: 8pt;'>polymorphism</a>
+<a href='http://www.caveofprogramming.com/tag/programming/' class='tag-link-4' title='76 topics' style='font-size: 21.5205479452pt;'>programming</a>
+<a href='http://www.caveofprogramming.com/tag/set/' class='tag-link-125' title='5 topics' style='font-size: 10.8767123288pt;'>set</a>
+<a href='http://www.caveofprogramming.com/tag/setters/' class='tag-link-109' title='3 topics' style='font-size: 9.15068493151pt;'>setters</a>
+<a href='http://www.caveofprogramming.com/tag/stringbuilder/' class='tag-link-119' title='2 topics' style='font-size: 8pt;'>StringBuilder</a>
+<a href='http://www.caveofprogramming.com/tag/strings/' class='tag-link-18' title='3 topics' style='font-size: 9.15068493151pt;'>strings</a>
+<a href='http://www.caveofprogramming.com/tag/swing/' class='tag-link-83' title='14 topics' style='font-size: 14.7123287671pt;'>swing</a>
+<a href='http://www.caveofprogramming.com/tag/test/' class='tag-link-63' title='3 topics' style='font-size: 9.15068493151pt;'>test</a>
+<a href='http://www.caveofprogramming.com/tag/tostring/' class='tag-link-41' title='2 topics' style='font-size: 8pt;'>tostring</a>
+<a href='http://www.caveofprogramming.com/tag/treemap/' class='tag-link-122' title='2 topics' style='font-size: 8pt;'>treemap</a>
+<a href='http://www.caveofprogramming.com/tag/tutor/' class='tag-link-59' title='4 topics' style='font-size: 10.1095890411pt;'>tutor</a>
+<a href='http://www.caveofprogramming.com/tag/tutorial/' class='tag-link-74' title='72 topics' style='font-size: 21.2328767123pt;'>tutorial</a>
+<a href='http://www.caveofprogramming.com/tag/variables/' class='tag-link-11' title='2 topics' style='font-size: 8pt;'>variables</a>
+<a href='http://www.caveofprogramming.com/tag/video/' class='tag-link-96' title='13 topics' style='font-size: 14.4246575342pt;'>video</a></div>
+</li>
+			</ul>
+		</div><!-- #sidebar -->
+
+		<br class="clear" />
+	</div><!--// #content-wrapper -->
+
+	<div id="footer" role="contentinfo">
+	<hr />
+	<p><a href="http://www.caveofprogramming.com" rel="home">Cave of Programming</a></p>
+	<ul>
+		<li><a href="http://wordpress.org" title="WordPress Engine">WordPress</a> | 
+			<span class="vcard">
+				<a class="url fn" rel="follow designer" title="Simplish Style" href="http://simplish.pomfolio.com">Simplish</a> 
+<span class="hidden">from <span class="org">Utopian.net Labs</span></span>
+			</span>
+		</li>
+	</ul>
+	</div><!--// #footer -->
+</div><!--// #container -->
+
+		<script type="text/javascript" >
+
+			fold();
+		function notify(){
+
+			var answer = confirm ('');
+			if (!answer)
+				return false;
+			else
+				return true;
+		}
+
+		</script>
+	<!-- Start Shareaholic TopSharingBar Automatic --><!-- End Shareaholic TopSharingBar Automatic --><script type="text/javascript">var SHRSB_Settings = {"shr-publisher-230":{"link":"http:\/\/www.caveofprogramming.com\/perl\/perl-wget-retrieving-html-pages-in-perl\/","shortener":"google","title":"Perl Wget -- Retrieving HTML Pages In Perl","notes":"Wget%20is%20a%20command-line%20program%20that%20allows%20you%20to%20retrieve%20files%20via%20HTTP%20or%20FTP%20from%20a%20UNIX%20prompt.%20People%20who%20are%20familiar%20with%20UNIX%20or%20Linux%20often%20wonder%20how%20to%20use%20wget%20in%20Perl.%20The%20simple%20answer%20is%20--%20don%27t%21%20OK%2C%20if%20you%20really%20want%20to%20use%20wget%20in%20Perl%2C%20you%20can%20always%20execute%20it%20like%20any%20other%20co","service":"5,7,88,74,2,38,52,201,236,3","apikey":"8afa39428933be41f8afdb8ea21a495c","expand":true,"src":"http:\/\/www.caveofprogramming.com\/wp-content\/uploads\/shareaholic\/spritegen","localize":true,"share_src":"http:\/\/www.shareaholic.com","rel":"nofollow","target":"_blank","bgimg":"http:\/\/www.caveofprogramming.com\/wp-content\/plugins\/sexybookmarks\/images\/share-knowledge.png","bgimg_padding":"35px 0 0 10px","center":true,"twitter_template":"%24%7Btitle%7D+-+%24%7Bshort_link%7D+via+%40Shareaholic","mode":"inject","designer_toolTips":"1","tip_bg_color":"#000000","tip_text_color":"#ffffff","shrlink":"1"}};</script>	
+<!-- START: Syntax Highlighter ComPress -->
+<script type="text/javascript">
+    SyntaxHighlighter.autoloader(
+        'applescript			http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushAppleScript.js',
+        'actionscript3 as3		http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushAS3.js',
+        'bash shell				http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushBash.js',
+        'coldfusion cf			http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushColdFusion.js',
+        'cpp c					http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushCpp.js',
+        'c# c-sharp csharp		http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushCSharp.js',
+        'css					http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushCss.js',
+        'delphi pascal pas		http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushDelphi.js',
+        'diff patch			    http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushDiff.js',
+        'erl erlang				http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushErlang.js',
+        'groovy					http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushGroovy.js',
+        'java					http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushJava.js',
+        'jfx javafx				http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushJavaFX.js',
+        'js jscript javascript	http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushJScript.js',
+        'perl pl				http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPerl.js',
+        'php					http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPhp.js',
+        'text plain				http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPlain.js',
+        'powershell ps          http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPowerShell.js',
+        'py python				http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushPython.js',
+        'ruby rails ror rb		http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushRuby.js',
+        'sass scss              http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushSass.js',
+        'scala					http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushScala.js',
+        'sql					http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushSql.js',
+        'vb vbnet				http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushVb.js',
+        'xml xhtml xslt html	http://www.caveofprogramming.com/wp-content/plugins/syntax-highlighter-compress/scripts/shBrushXml.js'
+    );
+                        SyntaxHighlighter.defaults['tab-size'] = 4;
+    SyntaxHighlighter.all();
+</script>
+<!-- END: Syntax Highlighter ComPress -->
+
+	<script type='text/javascript'>var _cmo = {background_color: "#68202C",label: "Contact",text: "Contact",align: "left",valign: "middle",form: "4df20591b15c2d0001010a2d",lang: "en"}; (function() {var cms = document.createElement('script'); cms.type = 'text/javascript'; cms.async = true; cms.src = 'http://static.contactme.com/widgets/tab/v1/tab.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cms, s);})();</script><script type='text/javascript' src='http://www.caveofprogramming.com/wp-content/plugins/optimized-latex/ajax.js?ver=0,50'></script>
+
+</body>
+</html>

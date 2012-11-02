@@ -1,0 +1,895 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if IE 7]>
+<html id="ie7" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<![endif]-->
+<!--[if (gt IE 7) | (!IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!--<![endif]-->
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Displaying Perl Program Usage Information &laquo; Data Blog</title>
+<link rel="stylesheet" href="http://s1.wp.com/wp-content/themes/pub/redoable-lite/style.css?m=1342115986g&amp;2" type="text/css" media="screen" />
+<link rel="pingback" href="http://numberformatdata.wordpress.com/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="Data Blog &raquo; Feed" href="http://numberformatdata.wordpress.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Data Blog &raquo; Comments Feed" href="http://numberformatdata.wordpress.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Data Blog &raquo; Displaying Perl Program Usage&nbsp;Information Comments Feed" href="http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/feed/" />
+<script type="text/javascript">
+/* <![CDATA[ */
+function addLoadEvent(func){var oldonload=window.onload;if(typeof window.onload!='function'){window.onload=func;}else{window.onload=function(){oldonload();func();}}}
+/* ]]> */
+</script>
+<link rel='stylesheet' id='all-css-0' href='http://s2.wp.com/_static/??/wp-includes/js/thickbox/thickbox.css,/wp-content/blog-plugins/loggedout-follow/widget.css,/wp-content/mu-plugins/infinity/themes/pub/redoable-lite.css,/wp-content/mu-plugins/post-flair/style.css,/wp-content/themes/h4/global.css?m=1351538028j' type='text/css' media='all' />
+<link rel='stylesheet' id='print-css-0' href='http://s0.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1335386953g' type='text/css' media='print' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var LoggedOutFollow = {"invalid_email":"Your subscription did not succeed, please try again with a valid email address."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://s0.wp.com/_static/??/wp-includes/js/jquery/jquery.js,/wp-content/blog-plugins/loggedout-follow/widget.js,/wp-includes/js/comment-reply.min.js?m=1349903959j'></script>
+<link rel='stylesheet' id='all-css-0' href='http://s1.wp.com/wp-content/mu-plugins/highlander-comments/style.css?m=1343991657g' type='text/css' media='all' />
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='http://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1307172283g&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://numberformatdata.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://numberformatdata.wordpress.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Installing a Fake DNS&nbsp;Server' href='http://numberformatdata.wordpress.com/2011/11/24/installing-a-fake-dns-server/' />
+<link rel='next' title='Uninstalling Leaf&nbsp;Ports' href='http://numberformatdata.wordpress.com/2011/11/27/uninstalling-leaf-ports/' />
+<meta name="generator" content="WordPress.com" />
+<link rel='canonical' href='http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/' />
+<link rel='shortlink' href='http://wp.me/pNrxX-bi' />
+<link rel="alternate" type="application/json+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=http%3A%2F%2Fnumberformatdata.wordpress.com%2F2011%2F11%2F26%2Fdisplaying-perl-program-usage-information%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=http%3A%2F%2Fnumberformatdata.wordpress.com%2F2011%2F11%2F26%2Fdisplaying-perl-program-usage-information%2F&amp;for=wpcom-auto-discovery" /><meta property="og:type" content="article" />
+<meta property="og:title" content="Displaying Perl Program Usage&nbsp;Information" />
+<meta property="og:url" content="http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/" />
+<meta property="og:description" content="Validate PERL program arguments, command line usage and generate man page. This page is also a good place to start with a blank perl template. The Program The following program is annotated with sp..." />
+<meta property="og:site_name" content="Data Blog" />
+<meta name="twitter:card" content="summary" />
+<meta property="fb:app_id" content="249643311490" />
+<link rel="shortcut icon" type="image/x-icon" href="http://s2.wp.com/i/favicon.ico?m=1311976025g" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="http://s2.wp.com/i/favicon.ico?m=1311976025g" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon-precomposed" href="http://s0.wp.com/i/webclip.png?m=1311618091g" />
+<link rel='openid.server' href='http://numberformatdata.wordpress.com/?openidserver=1' />
+<link rel='openid.delegate' href='http://numberformatdata.wordpress.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="http://numberformatdata.wordpress.com/osd.xml" title="Data Blog" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com" />
+		<style>
+		/* <![CDATA[ */
+		/* Block: reblog */
+		
+		.reblog-from img                   { margin: 0 10px 0 0; vertical-align: middle; padding: 0; border: 0; }
+		.reblogger-note img.avatar         { float: left; padding: 0; border: 0; }
+		.reblogger-note-content            { margin: 0 0 20px; }
+		.reblog-post .wpcom-enhanced-excerpt-content { border-left: 3px solid #eee; padding-left: 15px; }
+		.reblog-post ul.thumb-list         { display: block; list-style: none; margin: 2px 0; padding: 0; clear: both; }
+		.reblog-post ul.thumb-list li      { display: inline; margin: 0; padding: 0 1px; border: 0; }
+		.reblog-post ul.thumb-list li a    { margin: 0; padding: 0; border: 0; }
+		.reblog-post ul.thumb-list li img  { margin: 0; padding: 0; border: 0; }
+		
+		.reblog-post .wpcom-enhanced-excerpt { clear: both; }
+		
+		.reblog-post .wpcom-enhanced-excerpt address,
+		.reblog-post .wpcom-enhanced-excerpt li,
+		.reblog-post .wpcom-enhanced-excerpt h1,
+		.reblog-post .wpcom-enhanced-excerpt h2,
+		.reblog-post .wpcom-enhanced-excerpt h3,
+		.reblog-post .wpcom-enhanced-excerpt h4,
+		.reblog-post .wpcom-enhanced-excerpt h5,
+		.reblog-post .wpcom-enhanced-excerpt h6,
+		.reblog-post .wpcom-enhanced-excerpt p { font-size: 100% !important; }
+		
+		.reblog-post .wpcom-enhanced-excerpt blockquote,
+		.reblog-post .wpcom-enhanced-excerpt pre,
+		.reblog-post .wpcom-enhanced-excerpt code,
+		.reblog-post .wpcom-enhanced-excerpt q { font-size: 98% !important; }
+		
+
+		/* ]]> */		
+		</style>
+		<meta name="application-name" content="Data Blog" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="Just another WordPress.com weblog" /><meta name="msapplication-task" content="name=Subscribe;action-uri=http://numberformatdata.wordpress.com/feed/;icon-uri=http://s2.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico" /><meta name="title" content="Displaying Perl Program Usage&nbsp;Information | Data Blog on WordPress.com" />
+<meta name="description" content="Validate PERL program arguments, command line usage and generate man page. This page is also a good place to start with a blank perl template. The Program The following program is annotated with specific tokens that allow the Pod::Usage module provide the features listed above. Parameter Validation Print Help Information PERL Doc If you have&hellip;" />
+<style type="text/css">
+#header_content {
+	background:#900 url() center repeat-y;
+}
+#header_content h1 a, #header_content h1 a:hover {
+	color: #ffffff;
+}
+</style>
+
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-3443918307802676");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-3443918307802676", "wpcom_below_post");
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<script type="text/javascript"> 
+	window.google_analytics_uacct = "UA-52447-2"; 
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'wordpress.com']);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script>
+</head>
+
+	
+
+
+<body class="wordpress k2 y2012 m10 d30 h12 single s-y2011 s-m11 s-d26 s-h06 s-category-uncategorized s-author-numberformat highlander-enabled highlander-dark" >
+
+	<div id="header">
+    	<div class="top">
+
+			<div id="header_content" onclick="document.location='http://numberformatdata.wordpress.com';" style="cursor: pointer;">
+				<div id="title" class="title">
+					<h1><a href="http://numberformatdata.wordpress.com/" title="Back to the front page">Data Blog</a></h1>
+           		</div>
+
+				<div id="rightcolumnheader">
+								</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+		<div class="navigation-menu">
+		<ul id="alt_menu">
+	<li class="page_item page-item-2"><a href="http://numberformatdata.wordpress.com/about/">About</a></li>
+<li class="page_item page-item-378"><a href="http://numberformatdata.wordpress.com/legal-stuff-please-read/">Legal&nbsp;Stuff</a></li>
+</ul>
+	</div>
+	
+<div id="page">
+	<hr />
+<div class="content">
+
+	<div id="middlecolumn">
+		<div id="primary">
+			
+				<div id="primarycontent" class="hfeed">
+
+					
+
+<div id="post-700" class="post-700 post type-post status-publish format-standard hentry category-uncategorized tag-perl p publish author-numberformat y2011 m11 d26 h06">
+	<div class="entry-head">
+		<div class="published_sm" title="2011-11-26T18:02:51+0000"><div class="day">26</div><div class="month">Nov</div><div class="year">11</div></div>		<h3 class="entry-title">Displaying Perl Program Usage&nbsp;Information</h3>
+		
+		<div class="entry-meta">
+			<div class="meta-row">
+				<span class="authordata">By <span class="vcard author"><a href="http://numberformatdata.wordpress.com/author/numberformat/" class="url fn">numberformat</a></span></span>				<a href="http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/#respond" class="commentslink"  title="Comment on Displaying Perl Program Usage&nbsp;Information">Leave a&nbsp;<span>Comment</span></a>			</div>
+			<div class="meta-row">
+				<span class="entry-category">Categories: <a href="http://numberformatdata.wordpress.com/category/uncategorized/" title="View all posts in Uncategorized">Uncategorized</a></span>				<br /><span class="entry-category">Tags: <a href="http://numberformatdata.wordpress.com/tag/perl/" rel="tag">perl</a><br /></span>			</div>
+		</div> <!-- .entry-meta -->
+	</div> <!-- .entry-head -->
+
+	<div class="entry-content">
+		<p>Validate PERL program arguments, command line usage and generate man page. This page is also a good place to start with a blank perl template.</p>
+<h3>The Program</h3>
+<p>The following program is annotated with specific tokens that allow the Pod::Usage module provide the features listed above.</p>
+<p><pre class="brush: perl; gutter: false;">
+#!/usr/bin/perl -w
+
+use Getopt::Long;
+use Pod::Usage;
+
+my $man = 0;
+my $help = 0;
+## Parse options and print usage if there is a syntax error,
+## or if usage was explicitly requested.
+GetOptions('help|?' =&gt; \$help, man =&gt; \$man) or pod2usage(2);
+pod2usage(1) if $help;
+pod2usage(-verbose =&gt; 2) if $man;
+
+## If no arguments were given, then allow STDIN to be used only
+## if it's not connected to a terminal (otherwise print usage)
+pod2usage(&quot;$0: No files given.&quot;) if ((@ARGV == 0) &amp;&amp; (-t STDIN));
+__END__
+
+=head1 NAME
+
+sample - Using GetOpt::Long and Pod::Usage
+
+=head1 SYNOPSIS
+
+sample [options] [file ...]
+
+=head1 OPTIONS
+
+=over 8
+
+=item B&lt;-help&gt;
+
+Print a brief help message and exits.
+
+=item B&lt;-man&gt;
+
+Prints the manual page and exits.
+
+=back
+
+=head1 DESCRIPTION
+
+B&lt;This program&gt; will read the given input file(s) and do something
+useful with the contents thereof.
+
+=cut
+</pre></p>
+<h3>Parameter Validation</h3>
+<p><pre class="brush: bash; gutter: false;">
+./test.pl
+</pre></p>
+<h3>Print Help Information</h3>
+<p><pre class="brush: bash; gutter: false;">
+./test.pl -help
+</pre></p>
+<h3>PERL Doc</h3>
+<p>If you have perldoc installed on your system when you type:</p>
+<p><pre class="brush: bash; gutter: false;">
+./test.pl -man
+</pre></p>
+<p>or</p>
+<p><pre class="brush: bash; gutter: false;">
+perldoc -T test.pl
+</pre></p>
+<p>The following is how to output looks like.<br />
+<pre class="brush: plain; gutter: false;">
+TEST(1)               User Contributed Perl Documentation              TEST(1)
+
+
+
+NAME
+       sample - Using GetOpt::Long and Pod::Usage
+
+SYNOPSIS
+       sample [options] [file ...]
+
+OPTIONS
+       -help   Print a brief help message and exits.
+
+       -man    Prints the manual page and exits.
+
+DESCRIPTION
+       This program will read the given input file(s) and do something useful
+       with the contents thereof.
+
+
+
+perl v5.10.1                      2011-11-26                           TEST(1)
+</pre></p>
+
+<div class="wpadvert" style="position: relative; width:300px; text-align: center; padding: 0; margin: 10px auto; overflow: hidden;">
+<a style="position: absolute; text-align: left; display: block; font: 9px/1 sans-serif; text-decoration: underline;" href="http://en.wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+<script type="text/javascript">
+GA_googleAddAttr("AdOpt", "1");
+GA_googleAddAttr("Origin", "other");
+GA_googleAddAttr("LangId", "1");
+GA_googleAddAttr("Domain", "numberformatdata.wordpress.com");
+GA_googleAddAttr("Autotag", "technology");
+GA_googleAddAttr("Tag", "perl");
+GA_googleAddAttr("theme_bg", "333333"); 
+GA_googleAddAttr("theme_border", "444444"); 
+GA_googleAddAttr("theme_text", "eeeeee"); 
+GA_googleAddAttr("theme_link", "cccccc"); 
+GA_googleAddAttr("theme_url", "ee0000"); 
+GA_googleAddAdSensePageAttr("google_page_url", "http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/");
+GA_googleFillSlot("wpcom_below_post");
+</script>
+</div>
+<style type="text/css">
+div.wpadvert>div { margin-top: 1em; }
+</style>
+<script type="text/javascript">
+jQuery( window ).load( function() {
+    if ( jQuery(".wpadvert script[src*='shareth.ru']").length > 0 || jQuery(".wpadvert .sharethrough-placement").length > 0 ) {
+        jQuery( '.wpadvert' ).css( 'width', '400px' );
+    }
+setTimeout(function(){if(typeof GS_googleAddAdSenseService !== 'function'){new Image().src=document.location.protocol+"//stats.wordpress.com/g.gif?v=wpcom-no-pv&x_noads=adblock&baba="+Math.random()}},100);
+} );
+</script>
+<div id="jp-post-flair" class="sharedaddy sharedaddy-dark sd-like-enabled"><div class="wpl-likebox sd-block sd-like"><h3 class="sd-title">Like this:</h3><div class="sd-content"><div id="like-700" class="wpl-button "><a href='http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/?like=1&amp;_wpnonce=408a4faab0' title='I like this.' class='like needs-login sd-button' rel='nofollow'><span>Like</span></a></div><div class="wpl-count sd-like-count">Be the first to like this.</div></div></div></div>
+								</div> <!-- .entry-content -->
+
+
+</div> <!-- #post-ID -->
+
+
+				</div> <!-- #primarycontent .hfeed -->
+
+			
+		</div> <!-- #primary -->
+	</div>
+
+	<hr />
+
+<div id="comment-block">
+
+
+	<div class="comments">
+
+		<h4><span id="comments">0</span> Responses to &#8220;Displaying Perl Program Usage&nbsp;Information&#8221;</h4>
+
+		<div class="metalinks">
+			<span class="commentsrsslink"><a href='http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/feed/'>Feed for this Entry</a></span>
+			<span class="trackbacklink"><a href="http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/trackback/" title="Copy this URI to trackback this entry.">Trackback Address</a></span>		</div>
+	<hr />
+
+	<ol id="commentlist">
+		</ol> <!-- END #commentlist -->
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+	<br />
+
+	<ol id="pinglist">
+		</ol> <!-- END #pinglist -->
+
+				<ol id="commentlist">
+			<li id="leavecomment">
+				Leave a Comment			</li>
+		</ol>
+		
+		
+	</div> <!-- END .comments 1 -->
+
+	
+									<div id="respond">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/11/26/displaying-perl-program-usage-information/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://numberformatdata.wordpress.com/wp-comments-post.php" method="post" id="commentform">
+																										
+
+
+												
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest" />
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment"></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="http://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=G" alt="Gravatar" width="25" class="no-grav" />
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="text" value="" /></div>
+				</div> 
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="http://s2.wp.com/wp-content/mu-plugins/highlander-comments/images/wplogo.png?m=1289230950g" alt="WordPress.com Logo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" />
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="http://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=G" alt="Twitter picture" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" />
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="http://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=G" alt="Facebook photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" />
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+	
+	
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+});
+</script>
+
+<div id="comment-form-subscribe"> 
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6"/> <label class="subscribe-label" id="subscribe-label" for="subscribe">Notify me of follow-up comments via email.</label></p></div>
+
+												<p class="form-submit">
+							<input name="submit" type="submit" id="comment-submit" value="Post Comment" />
+							<input type='hidden' name='comment_post_ID' value='700' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+						
+<input type="hidden" name="genseq" value="1351598633" />
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="f6f48bd8d2" /></p><script type='text/javascript' src='http://s2.wp.com/wp-content/mu-plugins/akismet-2.5/form.js?m=1308783962g'></script>
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="9"/></p>					</form>
+							</div><!-- #respond -->
+			<div style="clear: both"></div>			
+	<div class="comments">
+			
+	<hr />
+
+	
+	<div class="navigation">
+		<div class="left"><span>&laquo;</span> <a href="http://numberformatdata.wordpress.com/2011/11/24/installing-a-fake-dns-server/">Installing a Fake DNS&nbsp;Server</a></div>		<div class="right"><a href="http://numberformatdata.wordpress.com/2011/11/27/uninstalling-leaf-ports/">Uninstalling Leaf&nbsp;Ports</a> <span>&raquo;</span></div>		<div class="clear"></div>
+	</div>
+
+	
+	<hr />
+	</div>
+
+</div>
+
+	<div id="rightcolumn">
+		<hr />
+
+<div class="secondary">
+
+	<div id="current-content">
+
+
+	<div id="search">
+		<h2>Search</h2>
+		<form method="get" id="searchform" action="http://numberformatdata.wordpress.com/">
+	<div>
+		<input type="text" value="search" onfocus="if (this.value == 'search' ) { this.value = ''; }" onblur="if (this.value == '') { this.value = 'search';}" name="s" id="s" size="15" />
+		<input type="submit" id="searchsubmit" value="Go" />
+	</div>
+</form>	</div>
+	<div class="sb-spacer"></div>
+
+	<div id="dynamic-content"></div>
+
+	<div class="sb-calendar" style="float:left">
+		<table id="wp-calendar">
+	<caption>November 2011</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+		<th scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://numberformatdata.wordpress.com/2011/08/" title="View posts for August 2011">&laquo; Aug</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next"><a href="http://numberformatdata.wordpress.com/2011/12/" title="View posts for December 2011">Dec &raquo;</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="1" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td><td><a href="http://numberformatdata.wordpress.com/2011/11/05/" title="Disk space monitoring&nbsp;script">5</a></td><td>6</td>
+	</tr>
+	<tr>
+		<td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td><a href="http://numberformatdata.wordpress.com/2011/11/12/" title="Setting up Data Replication in&nbsp;mySQL, Mysql Backup and Restore&nbsp;procedures">12</a></td><td>13</td>
+	</tr>
+	<tr>
+		<td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+	</tr>
+	<tr>
+		<td>21</td><td>22</td><td>23</td><td><a href="http://numberformatdata.wordpress.com/2011/11/24/" title="Installing a Fake DNS&nbsp;Server">24</a></td><td>25</td><td><a href="http://numberformatdata.wordpress.com/2011/11/26/" title="Displaying Perl Program Usage&nbsp;Information">26</a></td><td><a href="http://numberformatdata.wordpress.com/2011/11/27/" title="Uninstalling Leaf&nbsp;Ports">27</a></td>
+	</tr>
+	<tr>
+		<td>28</td><td>29</td><td><a href="http://numberformatdata.wordpress.com/2011/11/30/" title="Configuring TCSH with command line search on&nbsp;Ubuntu">30</a></td>
+		<td class="pad" colspan="4">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table>	</div>
+
+	<div class="sb-months" style="float:right;width:85px;">
+		<h2>Months</h2>
+		<ul>
+				<li><a href='http://numberformatdata.wordpress.com/2012/02/' title='February 2012'>February 2012</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2012/01/' title='January 2012'>January 2012</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2011/12/' title='December 2011'>December 2011</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2011/11/' title='November 2011'>November 2011</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2011/08/' title='August 2011'>August 2011</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2011/07/' title='July 2011'>July 2011</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2011/06/' title='June 2011'>June 2011</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2011/05/' title='May 2011'>May 2011</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2011/01/' title='January 2011'>January 2011</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2010/12/' title='December 2010'>December 2010</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2010/11/' title='November 2010'>November 2010</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2010/10/' title='October 2010'>October 2010</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2010/08/' title='August 2010'>August 2010</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2010/07/' title='July 2010'>July 2010</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2010/05/' title='May 2010'>May 2010</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2010/02/' title='February 2010'>February 2010</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2009/12/' title='December 2009'>December 2009</a></li>
+	<li><a href='http://numberformatdata.wordpress.com/2009/08/' title='August 2009'>August 2009</a></li>
+		</ul>
+	</div>
+	<div class="sb-spacer"></div>
+
+	<div class="sb-links">
+		<h2>Blogroll</h2>
+		<div>
+				<a href="http://numberformat.wordpress.com" title="Anything related to Java and JEE technology.">My Blog on Java Technology</a>
+<a href="http://wordpress.com/">WordPress.com</a>
+<a href="http://wordpress.org/">WordPress.org</a>
+		</div>
+	</div>
+
+	<!-- ?php if (!is_single() and !is_page() and !is_category() and !is_day() and !is_month() and !is_year() and !is_search() and !is_paged()) { ? -->
+
+	<div class="sb-spacer"></div>
+
+	<div class="sb-latest">
+		<h2>Recent Entries</h2>
+		<ul>
+							<li><a href="http://numberformatdata.wordpress.com/2012/02/08/firewall-testing-and-monitoring/">Firewall Testing and&nbsp;Monitoring</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2012/02/05/convert-java-properties-to-shell-environment-variables/">Convert Java Properties to Shell Environment&nbsp;Variables</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2012/01/16/ups-configuration-on-freebsd-8-2/">UPS configuration on FreeBSD&nbsp;8.2</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2011/12/02/sudo-on-ubuntu-without-password/">sudo on ubuntu without&nbsp;password</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2011/12/01/fake-smtp-server/">Fake SMTP&nbsp;Server</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2011/11/30/draft-configuring-tcsh-on-ubuntu/">Configuring TCSH with command line search on&nbsp;Ubuntu</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2011/11/27/uninstalling-leaf-ports/">Uninstalling Leaf&nbsp;Ports</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/">Displaying Perl Program Usage&nbsp;Information</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2011/11/24/installing-a-fake-dns-server/">Installing a Fake DNS&nbsp;Server</a></li>
+							<li><a href="http://numberformatdata.wordpress.com/2011/11/12/mysql-backup-and-restore-procedures/">Mysql Backup and Restore&nbsp;procedures</a></li>
+					</ul>
+	</div>
+
+	<!-- ?php } ? -->
+
+	
+
+	</div><!-- .current-content -->
+
+</div>
+	</div>
+	<div class="clear"></div>
+
+</div> <!-- .content -->
+
+	<div class="clear"></div>
+</div> <!-- Close Page -->
+
+<hr />
+
+<div id="footer"><!-- UNSLEEPABLE FOOTER -->
+	<div id="footer_content">
+		<div id="footer_middle">
+		 		<div id="footer_images">
+
+		 		</div>
+
+		<!-- spacer -->
+		<div id="copyright"><p>&nbsp;</p></div>
+
+			<small>
+				<a href="http://wordpress.com/?ref=footer" rel="generator">Blog at WordPress.com</a>. | Theme: <a href="http://theme.wordpress.com/themes/redoable-lite/" title="Learn more about this theme">Redoable Lite</a> by <a href="http://www.deanjrobinson.com/" rel="designer">Dean J Robinson</a>.	 			</small>
+
+		</div>
+	</div>
+</div><!-- END UNSLEEPABLE FOOTER -->
+
+
+<script type="text/javascript">
+var _qevents = _qevents || [], wpcomQuantcastData = {"qacct":"p-18-mFEk4J448M","labels":",language.en,type.wpcom,posttag.firewall,posttag.freebsd,posttag.ipfw,posttag.nmap,as"};
+function wpcomQuantcastPixel( labels, options ) {
+	var i, defaults = wpcomQuantcastData, data = { event: 'ajax' };
+
+	labels  = labels  || '';
+	options = options || {};
+
+	if ( typeof labels != 'string' )
+		options = labels;
+
+	for ( i in defaults ) {
+		data[i] = defaults[i];
+	}
+
+	for ( i in options ) {
+		data[i] = options[i];
+	}
+
+	if ( data.labels ) {
+		data.labels += ',' + labels;
+	} else {
+		data.labels = labels;
+	}
+
+	_qevents.push( data );
+};
+(function() {var elem = document.createElement('script');elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";elem.async = true;elem.type = "text/javascript";var scpt = document.getElementsByTagName('script')[0];scpt.parentNode.insertBefore(elem, scpt);  })();
+_qevents.push( wpcomQuantcastData );
+</script>
+<noscript><div style="display: none;"><img src="//pixel.quantserve.com/pixel/p-18-mFEk4J448M.gif?labels=%2Clanguage.en%2Ctype.wpcom%2Cposttag.firewall%2Cposttag.freebsd%2Cposttag.ipfw%2Cposttag.nmap%2Cas" height="1" width="1" alt="" /></div></noscript>
+
+
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	(function($){
+		$(document).on( 'ready post-load', function() {
+
+			// Remove the login box when clicking the page
+			$( document ).mousedown( function( e ) {
+				if ( null == $( e.target ).closest( '#wpl-mustlogin' ).get( 0 ) ) {
+					$( '#wpl-mustlogin' ).remove();
+				}
+			});
+
+			// Handle clicking the like button itself
+			$('.wpl-button > a.like').click( function(e) {
+				e.preventDefault();
+
+				var postid = $(this).parent().attr('id').split('like-')[1];
+				$.post( 'http://numberformatdata.wordpress.com/wp-admin/admin-ajax.php', {
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_like_click'
+				} );
+
+				var tenMins = new Date();
+				tenMins.setTime( tenMins.getTime() + 600000 );
+				document.cookie = 'wpl_rand=4584c55bea; expires=' + tenMins.toGMTString() + '; domain=wordpress.com; path=/;';
+
+				$(this).parent().siblings('.wpl-count').after( '\
+					<div id="wpl-mustlogin"> \
+						<form action="https://numberformatdata.wordpress.com/wp-login.php" method="post"> \
+							<p>Just one more step to like this:</p> \
+							<label><span>Username</span> <input type="text" name="log" id="user_login" class="input" value="" size="20" tabindex="80" /></label> \
+							<label><span>Password</span> <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" tabindex="81" /></label> \
+							<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="Log In" tabindex="82" /> \
+							<input type="hidden" name="postid" value="' + postid + '" /> \
+							<input type="hidden" name="redirect_to" value="http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information?year=2011&#038;monthnum=11&#038;day=26&#038;name=displaying-perl-program-usage-information&#038;like=1" /> \
+							<input type="hidden" name="wpl_rand" value="4584c55bea" /> \
+							<p>Not a member yet? <a href="http://wordpress.com/signup/?ref=likebox&user=1" id="wpl-signup-link">Sign up with WordPress.com for free</a></p> \
+						</form> \
+					</div> \
+				');
+
+				$('#wpl-mustlogin').hide().slideDown('fast');
+			} );
+
+			$('#wpl-mustlogin input.input').live( 'focus', function() {
+				$(this).prev().hide();
+			}).live( 'blur', function() {
+				if ( $(this).val() == '' ) {
+					$(this).prev().show();
+				}
+			});
+
+			$('#wpl-mustlogin input#wp-submit').live( 'click', function(e) {
+				e.preventDefault();
+
+				$.post( 'http://numberformatdata.wordpress.com/wp-admin/admin-ajax.php', {
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_login_submit'
+				}, function() {
+					$('#wpl-mustlogin form').submit();
+				} );
+			});
+
+			$('#wpl-mustlogin a#wpl-signup-link').live( 'click', function(e) {
+				e.preventDefault();
+
+				var link = $(this).attr('href');
+
+				$.post( 'http://numberformatdata.wordpress.com/wp-admin/admin-ajax.php', {
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_signup_click'
+				}, function() {
+					location.href = link;
+				} );
+			});
+		})
+	})(jQuery);
+	/* ]]> */
+	</script>
+<script type='text/javascript' src='//0.gravatar.com/js/gprofiles.js?ver=201244ab'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1318621548g'></script>
+<script>jQuery(document).ready(function($){ Gravatar.profile_cb = function( h, d ) { WPGroHo.syncProfileData( h, d );	}; Gravatar.my_hash = WPGroHo.my_hash; Gravatar.init( 'body', '#wp-admin-bar-my-account' ); });</script>	<div style="display:none">
+	</div>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"http:\/\/numberformatdata.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"http:\/\/numberformatdata.wordpress.com\/wp-login.php?action=logout&_wpnonce=aadc518c89","homeURL":"http:\/\/numberformatdata.wordpress.com\/","postID":"700","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"0","userIsLoggedIn":"","isJetpack":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/mu-plugins/highlander-comments/script.js?m=1349905738g'></script>
+
+	<div id="bit" class="loggedout-follow-normal">
+		<a class="bsub" href="javascript:void(0)"><span id='bsub-text'>Follow</span></a>
+		<div id="bitsubscribe">
+
+					<h3><label for="loggedout-follow-field">Follow &ldquo;Data Blog&rdquo;</label></h3>
+
+			<form action="https://subscribe.wordpress.com" method="post" accept-charset="utf-8" id="loggedout-follow">
+			<p>Get every new post delivered to your Inbox.</p>
+
+			<p id="loggedout-follow-error" style="display: none;"></p>
+
+			
+			<p><input type="email" name="email" style="width: 95%; padding: 1px 2px" value="Enter your email address" onfocus='this.value=(this.value=="Enter your email address") ? "" : this.value;' onblur='this.value=(this.value=="") ? "Enter email address" : this.value;'  id="loggedout-follow-field"/></p>
+
+			<input type="hidden" name="action" value="subscribe"/>
+			<input type="hidden" name="blog_id" value="11783965"/>
+			<input type="hidden" name="source" value="http://numberformatdata.wordpress.com/2011/11/26/displaying-perl-program-usage-information/"/>
+			<input type="hidden" name="sub-type" value="loggedout-follow"/>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="7e15d756df" /><input type="hidden" name="_wp_http_referer" value="/2011/11/26/displaying-perl-program-usage-information/" />
+			<p id='bsub-subscribe-button'><input type="submit" value="Sign me up" /></p>
+			</form>
+					<div id='bsub-credit'><a href="http://wordpress.com/signup/?ref=lof">Powered by WordPress.com</a></div>
+		</div><!-- #bitsubscribe -->
+	</div><!-- #bit -->
+<script type="text/javascript" src="http://b.scorecardresearch.com/beacon.js"></script><script type="text/javascript">try{COMSCORE.beacon({c1:2,c2:7518284});}catch(e){}</script><noscript><p class="robots-nocontent"><img src="http://b.scorecardresearch.com/p?cj=1c1=2&#038;c2=7518284" alt="" style="display:none" width="1" height="1" /></p></noscript><script type='text/javascript' src='http://s2.wp.com/_static/??/wp-content/plugins/syntaxhighlighter/syntaxhighlighter/scripts/shCore.js,/wp-content/plugins/syntaxhighlighter/syntaxhighlighter/scripts/shBrushPerl.js,/wp-content/plugins/syntaxhighlighter/syntaxhighlighter/scripts/shBrushBash.js,/wp-content/plugins/syntaxhighlighter/syntaxhighlighter/scripts/shBrushPlain.js?m=1338000963j'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var themecssurl = "http://s0.wp.com/wp-content/plugins/syntaxhighlighter-wpcom/shThemeDefault.css?m=1267535107g&amp;ver=2.1.364b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.getElementsByTagName("head")[0].appendChild(themecss);
+	})();
+	SyntaxHighlighter.config.clipboardSwf = 'http://s2.wp.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter/scripts/clipboard.swf?m=1308177914g';
+	SyntaxHighlighter.config.strings.expandSource = 'show source';
+	SyntaxHighlighter.config.strings.viewSource = 'view source';
+	SyntaxHighlighter.config.strings.copyToClipboard = 'copy to clipboard';
+	SyntaxHighlighter.config.strings.copyToClipboardConfirmation = 'The code is in your clipboard now';
+	SyntaxHighlighter.config.strings.print = 'print';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.all();
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"http:\/\/numberformatdata.wordpress.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif","closeImage":"http:\/\/numberformatdata.wordpress.com\/wp-includes\/js\/thickbox\/tb-close.png"};
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"http:\/\/numberformatdata.wordpress.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif","closeImage":"http:\/\/numberformatdata.wordpress.com\/wp-includes\/js\/thickbox\/tb-close.png"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://s2.wp.com/_static/??/wp-content/js/devicepx.js,/wp-includes/js/thickbox/thickbox.js?m=1349105731j'></script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="http://s.stats.wordpress.com/w.js?21" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({'blog':'11783965','v':'wpcom','user_id':'0','post':'700','subd':'numberformatdata'});
+ex_go({'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdWFnNncxc1tjZG9XVXhReVdHSDB1cEtFVS1bJmdyVn5oSUFQeC1kQmJ8UV1kW3olYUEmLXlSQW1fQndodTFVcmpKbm5QcU5TOWNxalg0dmkwL1RyQn5MLT1ucUVsYSZLRVk1SkgzT1RxMlFWLkxGMnZHcC1oLiw5PUYmc1NOOGR3amkzZUtwUEJPWH49YVJDN2lHX1t5Nk40R11sYS8mOXVhdSwtZllsNWcyOGJBMExibjNXLFpxMzZPMy9WdUg4Xz0vYWY3My50RTRBdCVZMHBzTm1kQT1ZRVBWd0E/alMyQTJqbFY/R1AyWXJMK3hZMUswMjc5NHROcg=='});
+addLoadEvent(function(){linktracker_init('11783965',700);});
+	</script>
+<noscript><img src="http://stats.wordpress.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+
+</body>
+</html>

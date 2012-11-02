@@ -1,0 +1,3 @@
+include('Plib');
+
+echo(lsall('.'));

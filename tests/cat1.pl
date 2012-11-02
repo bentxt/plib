@@ -1,0 +1,1 @@
+cat "tests/texts.txt";

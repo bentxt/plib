@@ -1,0 +1,11 @@
+#!/bin/sh
+
+id="$0"
+
+curdir=$(dirname $id)
+
+idres=$(readlink $id)
+[ -n "$idres" ] && curdir="$(dirname $idres)"
+
+
+perl -Mlib='plib' -MPlib "$@"
